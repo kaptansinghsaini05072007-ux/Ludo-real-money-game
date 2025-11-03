@@ -1,0 +1,26 @@
+.stories-circle {
+    position: relative;
+    border-radius: 50%;
+    padding: 3px;
+}
+.stories-circle::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-radius: 50%;
+    z-index: -1;
+    animation: spin 20s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.post-card { transition: all 0.3s; }
+.post-card:hover { transform: scale(1.02); }
+.reel-player { aspect-ratio: 9/16; background: #000; }
+.notification-item { padding: 8px; border-radius: 8px; transition: background 0.2s; }
+.notification-item:hover { background: #f3f4f6; }
