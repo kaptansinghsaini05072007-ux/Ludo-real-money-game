@@ -512,3 +512,54 @@
     </script>
 </body>
 </html>
+<!-- Group Chat Section -->
+<div id="chatSection" class="hidden max-w-4xl mx-auto px-4 py-16">
+    <div class="bg-white rounded-3xl shadow-xl h-[600px] flex flex-col">
+        <!-- Chat Header -->
+        <div class="bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-t-3xl">
+            <h2 class="text-2xl font-heading text-center">Ludo Lounge</h2>
+            <p class="text-center text-sm opacity-90">Chat with all players!</p>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 scroll-auto">
+            <!-- Messages will appear here -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t">
+            <div class="flex gap-2">
+                <input 
+                    type="text" 
+                    id="chatInput" 
+                    placeholder="Type a message..." 
+                    class="flex-1 p-3 border-2 border-secondary rounded-full focus:border-primary outline-none"
+                    maxlength="200"
+                >
+                <button 
+                    onclick="toggleEmojiPicker()" 
+                    class="text-primary text-2xl hover:scale-110 transition"
+                >
+                    <i class="fas fa-smile"></i>
+                </button>
+                <button 
+                    onclick="sendMessage()" 
+                    class="bg-primary text-white p-3 rounded-full hover:bg-secondary transition"
+                >
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <!-- Emoji Picker (Hidden by default) -->
+            <div id="emojiPicker" class="hidden mt-2"></div>
+        </div>
+    </div>
+</div>
+<button onclick="showSection('chat')" class="text-primary text-2xl hover:scale-110 transition">
+    <i class="fas fa-comments"></i>
+</button>
+<a href="#" onclick="showSection('chat')" class="block px-6 py-3 hover:bg-light">
+    <i class="fas fa-comments mr-2"></i> Ludo Lounge
+</a>
+<script src="https://cdn.jsdelivr.net/npm/@emoji-mart/core@1.0.0/dist/emoji-mart.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@emoji-mart/css@1.0.0/emoji-mart.css" rel="stylesheet">
