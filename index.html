@@ -169,8 +169,26 @@
     </div>
 
     <!-- Dashboard (After Login) -->
+    <button onclick="showSection('feed')" class="text-primary text-2xl hover:scale-110 transition ml-4">
+    <i class="fab fa-instagram"></i>
+    </button>
     <div id="dashboard" class="hidden min-h-screen bg-light">
         <!-- Dashboard Navbar -->
+     <a href="#" onclick="showSection('feed')" class="block px-6 py-3 hover:bg-light">
+    <i class="fab fa-instagram mr-2"></i> Feed
+</a>
+<a href="#" onclick="showSection('stories')" class="block px-6 py-3 hover:bg-light">
+    <i class="far fa-circle mr-2"></i> Stories
+</a>
+<a href="#" onclick="showSection('reels')" class="block px-6 py-3 hover:bg-light">
+    <i class="fas fa-video mr-2"></i> Reels
+</a>
+<a href="#" onclick="showSection('explore')" class="block px-6 py-3 hover:bg-light">
+    <i class="fas fa-compass mr-2"></i> Explore
+</a>
+<a href="#" onclick="showSection('notifications')" class="block px-6 py-3 hover:bg-light">
+    <i class="fas fa-bell mr-2"></i> Notifications
+</a>
         <nav class="bg-white shadow-lg sticky top-0 z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
@@ -302,6 +320,95 @@
             </div>
         </div>
 
+        <!-- Instagram-like Features Section -->
+<!-- Feed Section -->
+<div id="feedSection" class="hidden max-w-4xl mx-auto px-4 py-16">
+    <div class="bg-white rounded-3xl shadow-xl p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-heading text-primary">Your Feed</h2>
+            <button onclick="showPostModal()" class="bg-secondary text-white px-6 py-2 rounded-full font-bold hover:bg-primary transition">
+                <i class="fas fa-plus mr-2"></i>Post
+            </button>
+        </div>
+        <div id="feedPosts" class="space-y-4">
+            <!-- Posts will load here -->
+        </div>
+    </div>
+</div>
+
+<!-- Stories Section -->
+<div id="storiesSection" class="hidden max-w-4xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-heading text-primary mb-6 text-center">Stories</h2>
+    <div class="flex overflow-x-auto space-x-4 pb-4">
+        <div class="stories-circle bg-gradient-to-r from-purple-400 to-pink-400 text-white p-1 rounded-full">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                <i class="fas fa-plus text-gray-400 text-xl"></i>
+            </div>
+        </div>
+        <!-- User stories here -->
+        <div id="userStories"></div>
+    </div>
+    <div id="storyViewer" class="hidden bg-black fixed inset-0 z-50 flex items-center justify-center">
+        <div class="relative w-full h-full">
+            <img id="storyImage" class="w-full h-full object-cover" src="" alt="Story">
+            <button onclick="closeStory()" class="absolute top-4 left-4 text-white text-3xl">&times;</button>
+        </div>
+    </div>
+</div>
+
+<!-- Reels Section -->
+<div id="reelsSection" class="hidden max-w-md mx-auto px-4 py-16">
+    <h2 class="text-2xl font-heading text-primary mb-6 text-center">Reels</h2>
+    <div id="reelsFeed" class="space-y-4">
+        <!-- Reels will load here -->
+    </div>
+    <button onclick="showReelUpload()" class="fixed bottom-20 right-6 bg-primary text-white p-4 rounded-full shadow-lg">
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
+
+<!-- Explore Section -->
+<div id="exploreSection" class="hidden max-w-4xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-heading text-primary mb-6 text-center">Explore</h2>
+    <div id="explorePosts" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- Trending posts grid -->
+    </div>
+</div>
+
+<!-- Notifications Section -->
+<div id="notificationsSection" class="hidden max-w-md mx-auto px-4 py-16">
+    <h2 class="text-2xl font-heading text-primary mb-6 text-center">Notifications</h2>
+    <div id="notificationsList" class="space-y-2">
+        <!-- Notifications here -->
+    </div>
+</div>
+
+<!-- Post Modal -->
+<div id="postModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl p-6 w-full max-w-md">
+        <h3 class="text-xl font-bold mb-4">Create Post</h3>
+        <textarea id="postCaption" placeholder="What's on your mind? Share your Ludo win!" class="w-full p-3 border rounded-lg mb-4" rows="3"></textarea>
+        <input type="file" id="postImage" accept="image/*" class="mb-4">
+        <input type="file" id="postVideo" accept="video/*" class="mb-4">
+        <div class="flex justify-end space-x-4">
+            <button onclick="closePostModal()" class="px-6 py-2 text-gray-500">Cancel</button>
+            <button onclick="uploadPost()" class="bg-primary text-white px-6 py-2 rounded-lg">Post</button>
+        </div>
+    </div>
+</div>
+
+<!-- Reel Upload Modal -->
+<div id="reelModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-3xl p-6 w-full max-w-md">
+        <h3 class="text-xl font-bold mb-4">Upload Reel</h3>
+        <input type="file" id="reelVideo" accept="video/*" class="mb-4">
+        <input id="reelCaption" placeholder="Add caption" class="w-full p-3 border rounded-lg mb-4">
+        <div class="flex justify-end space-x-4">
+            <button onclick="closeReelModal()" class="px-6 py-2 text-gray-500">Cancel</button>
+            <button onclick="uploadReel()" class="bg-secondary text-white px-6 py-2 rounded-lg">Upload</button>
+        </div>
+    </div>
+</div>
         <!-- Deposit Section -->
         <div id="depositSection" class="hidden max-w-2xl mx-auto px-4 py-16">
             <div class="bg-white p-8 rounded-3xl shadow-xl">
